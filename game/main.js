@@ -13,7 +13,7 @@ window.addEventListener("keydown",(e)=>{
     } else if(e.key==="ArrowRight"){
         x += 10;
     } else if(e.key === "Space"){
-      tama += 1;
+     tama += 1;
     }
     });
 function gameLoop(){
