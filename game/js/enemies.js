@@ -1,7 +1,7 @@
 export const enemies = [];
-const SIZE = 100;
+const SIZE = 50;
 const enemyImage = new Image();
-enemyImage.src = "https://blog-imgs-114.fc2.com/k/i/k/kikigamesommelier/2017090217581265d.jpg";
+enemyImage.src = "enemy.png";
 function pushEnemies(canvas) {
   const w = SIZE;
   const h = SIZE;
@@ -13,7 +13,7 @@ function pushEnemies(canvas) {
 }
 
 export function spawnEnemy(canvas) {
- if (enemies.length < 5) {
+ if (enemies.length < 10) {
     pushEnemies(canvas);
  }
 }

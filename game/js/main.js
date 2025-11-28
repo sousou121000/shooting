@@ -1,10 +1,13 @@
 
 import { player, initPlayer, drawPlayer } from "./player.js";
-import { spawnEnemy, enemies,updateEnemies,drawEnemies} from "./enemies.js";
+import { spawnEnemy, enemies, updateEnemies, drawEnemies } from "./enemies.js";
 import { handleCollisions } from "./collision.js";
 
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
+
+const mapImage = new Image();
+mapImage.src = "map.png";
 
 initPlayer(canvas);
 
@@ -13,7 +16,7 @@ const BULLET_SPEED = -5;
 
 function tryShoot() {
     bullets.push({
-        x: player.x,
+        x: player.x + player.width / 2 - 5,
         y: player.y,
         width: 10,
         height: 10,
@@ -23,9 +26,9 @@ function tryShoot() {
 
 function updateScore() {
     const scoreBoard = document.getElementById("scoreBoard");
-    scoreBoard.innerText = `Score: ${player.score}`;
+    scoreBoard.innerText = `Score: ` + player.score;
     const lifeBoard = document.getElementById("lifeBoard");
-    lifeBoard.innerText = `Life: ${player.life}`;
+    lifeBoard.innerText = `Life: ` + player.life;
 }
 
 window.addEventListener("keydown", (e) => {
@@ -58,7 +61,7 @@ function update() {
 
 function draw() {
     ctx.fillStyle = "black";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(mapImage, 0, 0, canvas.width, canvas.height);
 
     drawPlayer(ctx);
 
@@ -78,4 +81,3 @@ function gameLoop() {
 }
 
 gameLoop();
-
